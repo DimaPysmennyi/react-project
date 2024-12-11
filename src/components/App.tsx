@@ -1,16 +1,22 @@
-import { PostList } from "./PostList/PostList"
-import { Header } from "./Header/Header"
-import { Footer } from "./Footer/Footer"
-import './App.css'
+import { Layout } from "./Layout/Layout";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { PostPage } from "./PostPage/PostPage";
+import { PostList } from "./PostList/PostList";
+// import './App.css';
 
 
 export function App(){
     return (
         <div>
-            <Header></Header>            
-            <h1 className="forum">Forum</h1>
-            <PostList></PostList>
-            <Footer></Footer>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Layout></Layout>}>
+                        <Route path="/posts" element={<PostList></PostList>}></Route>
+                        <Route path="/post/:id" element={<PostPage></PostPage>}></Route>
+                    </Route>
+                </Routes>
+
+            </BrowserRouter>
         </div>
     )
 }

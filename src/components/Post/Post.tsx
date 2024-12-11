@@ -4,7 +4,7 @@ import './Post.css'
 interface IProps{
     headline: string,
     desc: string,
-    src: string,
+    src?: string,
     author: string
 }
 

@@ -1,12 +1,13 @@
-import './Header.css'
+import './Header.css';
+import { Link } from 'react-router-dom';
 
 export function Header(){
     return (
         <header>
             <div className='links'>
-                <a href="#">Main</a>
-                <a href="#">Profile</a>
-                <a href="#">My Posts</a>
+                <Link className="link" to='/'>Main</Link>
+                <Link className="link" to="#">Profile</Link>
+                <Link className="link" to="/posts">My Posts</Link>
             </div>
             <button className="create-button">+ Create</button>
         </header>

@@ -4,31 +4,35 @@ import './PostList.css'
 
 const posts = [
     {
-        name: "Cat", 
-        category: "Cats",
-        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum bibendum leo, vitae luctus nisl hendrerit ac. Duis accumsan convallis sem at dapibus. Proin viverra est ut posuere...", 
-        src: "https://i.natgeofe.com/n/4cebbf38-5df4-4ed0-864a-4ebeb64d33a4/NationalGeographic_1468962_16x9.jpg",
+        id: 1,
+        title: "Cat", 
+        taglist: ["Cats"],
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum bibendum leo, vitae luctus nisl hendrerit ac. Duis accumsan convallis sem at dapibus. Proin viverra est ut posuere...", 
+        cover_image: "https://i.natgeofe.com/n/4cebbf38-5df4-4ed0-864a-4ebeb64d33a4/NationalGeographic_1468962_16x9.jpg",
         author: "serj roman"
     },
     {
-        name: "React", 
-        category: "Developing",
-        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum bibendum leo, vitae luctus nisl hendrerit ac. Duis accumsan convallis sem at dapibus. Proin viverra est ut posuere...", 
-        src: "https://www.patterns.dev/img/reactjs/react-logo@3x.svg",
+        id: 2,
+        title: "React", 
+        taglist: ["Developing"],
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum bibendum leo, vitae luctus nisl hendrerit ac. Duis accumsan convallis sem at dapibus. Proin viverra est ut posuere...", 
+        cover_image: "https://www.patterns.dev/img/reactjs/react-logo@3x.svg",
         author: "serj roman"
     },
     {
-        name: "Movie", 
-        category: "Movies",
-        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum bibendum leo, vitae luctus nisl hendrerit ac. Duis accumsan convallis sem at dapibus. Proin viverra est ut posuere...", 
-        src: "https://variety.com/wp-content/uploads/2023/03/Movie-Theater-Film-Cinema-Exhibition-Placeholder.jpg?w=1000&h=562&crop=1",
+        id: 3,
+        title: "Movie", 
+        taglist: ["Movies"],
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum bibendum leo, vitae luctus nisl hendrerit ac. Duis accumsan convallis sem at dapibus. Proin viverra est ut posuere...", 
+        cover_image: "https://variety.com/wp-content/uploads/2023/03/Movie-Theater-Film-Cinema-Exhibition-Placeholder.jpg?w=1000&h=562&crop=1",
         author: "serj roman"
     },
     {
-        name: "Marketing Tip", 
-        category: "Marketing",
-        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum bibendum leo, vitae luctus nisl hendrerit ac. Duis accumsan convallis sem at dapibus. Proin viverra est ut posuere...", 
-        src: "https://media.licdn.com/dms/image/v2/D5612AQGaPpJHHoJ1yg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1721182447314?e=2147483647&v=beta&t=wNMSy5Vbg7JOgCREYHwVzDXsU-xll4zDQdBaD8dRlyo",
+        id: 4,  
+        title: "Marketing Tip", 
+        taglist: ["Marketing"],
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum bibendum leo, vitae luctus nisl hendrerit ac. Duis accumsan convallis sem at dapibus. Proin viverra est ut posuere...", 
+        cover_image: "https://media.licdn.com/dms/image/v2/D5612AQGaPpJHHoJ1yg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1721182447314?e=2147483647&v=beta&t=wNMSy5Vbg7JOgCREYHwVzDXsU-xll4zDQdBaD8dRlyo",
         author: "serj roman"
     },
 
@@ -43,10 +47,19 @@ export function PostList(){
             setFilteredPosts(posts);
         } else{
             setFilteredPosts(posts.filter((post) => {
-                return post.category === selectedCategory;
+                return post.taglist[0] === selectedCategory;
             }))
         }
     }, [selectedCategory])
+
+    useEffect(() => {
+        async function getArticles(){
+            const response = await fetch('https://dev.to/api/articles');
+            const posts = await response.json();
+            setFilteredPosts(posts);
+        }
+        getArticles();
+    })
 
     return (
         <div className="post-list">
@@ -61,7 +74,7 @@ export function PostList(){
             </select>
             <div className="selectedPosts">
                 {filteredPosts.map((post) => {
-                    return <Post headline={post.name} desc={post.desc} src={post.src} author={post.author}></Post>
+                    return <Post key={post.id} headline={post.title} desc={post.description} src={post.cover_image} author={post.author}></Post>
                 })}
             </div>
         </div>
