@@ -1,0 +1,41 @@
+.postPage{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    padding: 20px;
+    /* text-align: center; */
+    /* width: 100%; */
+    font-size: 24px;
+}
+
+.postPage img{
+    width: 600px;
+}
+
+.postPage h1{
+    font-size: 36px;
+    font-weight: 400;
+}
+
+.postPage p{
+    font-size: 24px;
+}
+
+.postPage ul li{
+    font-size: 20px;
+}
+
+.postPage pre{
+    background-color: #1E1E1E;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.postPage #text{
+    font-size: 20px;
+}
+
+.postPage hr{
+    width: 100%;
+    color: #808080;
+}

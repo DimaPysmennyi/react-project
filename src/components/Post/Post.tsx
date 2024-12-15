@@ -1,7 +1,9 @@
-import { useState } from "react"
-import './Post.css'
+import { useState } from "react";
+import './Post.css';
+import { Link } from "react-router-dom";
 
 interface IProps{
+    id: number,
     headline: string,
     desc: string,
     src?: string,
@@ -15,22 +17,27 @@ export function Post(props: IProps){
         setLikes(likes+1);
         setDisabled(true);
     }
+
     return (
-        <div className='post'>
-            <div className="img">
-                <img src={props.src} alt="" />
-            </div>
-            <div className="headlines">
-                <h2>{props.headline}</h2>
-                <p>{props.author}</p>
-            </div>
-            <div className="desc">
-                <p>{props.desc}</p>
-                <div className="button-box">
-                    <button disabled={disabled} onClick={addLikes}>Like</button>
-                    <p>{likes}</p>
+        <Link to={`/post/${props.id}`}>
+            <div className='post'>
+                <div className="img">
+                    <img src={props.src} alt="" />
+                </div>
+                <div className="headlines">
+                    <h2>{props.headline.slice(0, 23)}...</h2>
+                    <p>{props.author}</p>
+                </div>
+                <div className="desc">
+                    <p>{props.desc}</p>
+                    <div className="button-box">
+                        <button disabled={disabled} onClick={addLikes}>Like</button>
+                        <p>{likes}</p>
+                    </div>
                 </div>
             </div>
-        </div>
+        </Link>
+
+        
     )
 }

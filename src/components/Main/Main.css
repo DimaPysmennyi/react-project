@@ -1,4 +1,7 @@
-
+.main{
+    min-height: 66vh;
+    height: auto;
+}
 
 .forum{
     color: white;

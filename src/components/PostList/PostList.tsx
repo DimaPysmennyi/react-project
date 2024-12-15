@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import {Post} from "../Post/Post"
 import './PostList.css'
+import { Link } from "react-router-dom";
 
 const posts = [
     {
@@ -74,7 +75,9 @@ export function PostList(){
             </select>
             <div className="selectedPosts">
                 {filteredPosts.map((post) => {
-                    return <Post key={post.id} headline={post.title} desc={post.description} src={post.cover_image} author={post.author}></Post>
+                    return (
+                        <Post key={post.id} id={post.id} headline={post.title} desc={post.description} src={post.cover_image} author={post.author}></Post> 
+                    )
                 })}
             </div>
         </div>
