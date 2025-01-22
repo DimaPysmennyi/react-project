@@ -1,5 +1,5 @@
 import { useState } from "react";
-import './Post.css';
+import './PostCard.css';
 import { Link } from "react-router-dom";
 
 interface IProps{
@@ -10,7 +10,7 @@ interface IProps{
     author: string
 }
 
-export function Post(props: IProps){
+export function PostCard(props: IProps){
     let [likes, setLikes] = useState(0)
     let [disabled, setDisabled] = useState(false)
     function addLikes(){
@@ -29,7 +29,7 @@ export function Post(props: IProps){
                     <p>{props.author}</p>
                 </div>
                 <div className="desc">
-                    <p>{props.desc}</p>
+                    <p>{props.desc.slice(0, 100)}...</p>
                     <div className="button-box">
                         <button disabled={disabled} onClick={addLikes}>Like</button>
                         <p>{likes}</p>

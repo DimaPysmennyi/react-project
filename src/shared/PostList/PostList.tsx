@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import {Post} from "../Post/Post"
-import './PostList.css'
-import { Link } from "react-router-dom";
+import { PostCard } from "../PostCard/PostCard"
+import { usePosts } from "../../hooks/usePosts";
+import './PostList.css';
 
 const posts = [
     {
@@ -40,6 +40,8 @@ const posts = [
 ]
 
 export function PostList(){
+    const {posts, isLoading, error} = usePosts();
+
     const [filteredPosts, setFilteredPosts] = useState(posts);
     const [selectedCategory, setSelectedCategory] = useState('All');
 
@@ -48,19 +50,14 @@ export function PostList(){
             setFilteredPosts(posts);
         } else{
             setFilteredPosts(posts.filter((post) => {
-                return post.taglist[0] === selectedCategory;
+                return post.tags === selectedCategory;
             }))
         }
     }, [selectedCategory])
 
     useEffect(() => {
-        async function getArticles(){
-            const response = await fetch('https://dev.to/api/articles');
-            const posts = await response.json();
-            setFilteredPosts(posts);
-        }
-        getArticles();
-    })
+        setFilteredPosts(posts);
+    }, [posts])
 
     return (
         <div className="post-list">
@@ -76,7 +73,7 @@ export function PostList(){
             <div className="selectedPosts">
                 {filteredPosts.map((post) => {
                     return (
-                        <Post key={post.id} id={post.id} headline={post.title} desc={post.description} src={post.cover_image} author={post.author}></Post> 
+                        <PostCard key={post.id} id={post.id} headline={post.title} desc={post.description} src={post.cover_image} author={post.author}></PostCard> 
                     )
                 })}
             </div>

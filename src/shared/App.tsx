@@ -1,9 +1,7 @@
 import { Layout } from "./Layout/Layout";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { PostPage } from "./PostPage/PostPage";
-import { PostList } from "./PostList/PostList";
-// import './App.css';
-
+import { PostPage } from "../pages/PostPage/PostPage";
+import { PostListPage } from "../pages/PostListPage/PostListPage";
 
 export function App(){
     return (
@@ -11,7 +9,7 @@ export function App(){
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Layout></Layout>}>
-                        <Route path="/posts" element={<PostList></PostList>}></Route>
+                        <Route path="/posts" element={<PostListPage></PostListPage>}></Route>
                         <Route path="/post/:id" element={<PostPage></PostPage>}></Route>
                     </Route>
                 </Routes>
