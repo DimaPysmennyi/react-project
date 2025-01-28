@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Markdown from "react-markdown";
 import './PostPage.css';
 import { usePostById } from "../../hooks/usePostById";
+import { LikeButton } from "../../shared/LikeButton/LikeButton";
 
 
 export function PostPage(){
@@ -14,6 +15,7 @@ export function PostPage(){
                 <h1>{post.title}</h1>
                 <img src={post.cover_image} alt="" />
                 <p>{post.tags}</p>
+                <LikeButton id={post.id} headline={post.title} desc={post.description} src={post.cover_image} author={post.author}></LikeButton>
                 <hr/>  
                 <Markdown>
                     {post.body_markdown}
