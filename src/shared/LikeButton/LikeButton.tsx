@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
-import { IPost, postContext } from "../App";
+import { IPost } from "../../hooks/usePostById";
+import { postContext } from "../../context/postContextProvider";
 
 
 export function LikeButton(props: IPost){

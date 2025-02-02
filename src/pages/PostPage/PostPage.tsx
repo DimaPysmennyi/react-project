@@ -15,7 +15,14 @@ export function PostPage(){
                 <h1>{post.title}</h1>
                 <img src={post.cover_image} alt="" />
                 <p>{post.tags}</p>
-                <LikeButton id={post.id} headline={post.title} desc={post.description} src={post.cover_image} author={post.author}></LikeButton>
+                <LikeButton id={post.id} 
+                    title={post.title} 
+                    description={post.description} 
+                    cover_image={post.cover_image} 
+                    author={post.author}
+                    tags={post.tags}
+                    body_markdown={post.body_markdown}
+                    ></LikeButton>
                 <hr/>  
                 <Markdown>
                     {post.body_markdown}

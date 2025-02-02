@@ -1,7 +1,8 @@
 import { useState, useContext } from "react";
 import './PostCard.css';
 import { Link } from "react-router-dom";
-import { IPost, postContext } from "../App";
+import { IPost } from "../../hooks/usePostById";
+import { postContext } from "../../context/postContextProvider";
 import { LikeButton } from "../LikeButton/LikeButton";
 
 
@@ -26,16 +27,23 @@ export function PostCard(props: IPost){
             <div className='post'>
                 <Link to={`/post/${props.id}`}>
                     <div className="img">
-                        <img src={props.src} alt="" />
+                        <img src={props.cover_image} alt="" />
                     </div>
                     <div className="headlines">
-                        <h2>{props.headline.slice(0, 23)}...</h2>
+                        <h2>{props.title.slice(0, 23)}...</h2>
                         <p>{props.author}</p>
                     </div>
                 </Link>
                 <div className="desc">
-                    <p>{props.desc.slice(0, 100)}...</p>
-                    <LikeButton id={props.id} headline={props.headline} desc={props.desc} src={props.src} author={props.author}></LikeButton>
+                    <p>{props.description.slice(0, 100)}...</p>
+                    <LikeButton id={props.id} 
+                    title={props.title} 
+                    description={props.description} 
+                    cover_image={props.cover_image} 
+                    author={props.author}
+                    tags={props.tags}
+                    body_markdown={props.body_markdown}
+                    ></LikeButton>
                 </div>
             </div>
 

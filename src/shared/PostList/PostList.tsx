@@ -3,42 +3,6 @@ import { PostCard } from "../PostCard/PostCard"
 import { usePosts } from "../../hooks/usePosts";
 import './PostList.css';
 
-const posts = [
-    {
-        id: 1,
-        title: "Cat", 
-        taglist: ["Cats"],
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum bibendum leo, vitae luctus nisl hendrerit ac. Duis accumsan convallis sem at dapibus. Proin viverra est ut posuere...", 
-        cover_image: "https://i.natgeofe.com/n/4cebbf38-5df4-4ed0-864a-4ebeb64d33a4/NationalGeographic_1468962_16x9.jpg",
-        author: "serj roman"
-    },
-    {
-        id: 2,
-        title: "React", 
-        taglist: ["Developing"],
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum bibendum leo, vitae luctus nisl hendrerit ac. Duis accumsan convallis sem at dapibus. Proin viverra est ut posuere...", 
-        cover_image: "https://www.patterns.dev/img/reactjs/react-logo@3x.svg",
-        author: "serj roman"
-    },
-    {
-        id: 3,
-        title: "Movie", 
-        taglist: ["Movies"],
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum bibendum leo, vitae luctus nisl hendrerit ac. Duis accumsan convallis sem at dapibus. Proin viverra est ut posuere...", 
-        cover_image: "https://variety.com/wp-content/uploads/2023/03/Movie-Theater-Film-Cinema-Exhibition-Placeholder.jpg?w=1000&h=562&crop=1",
-        author: "serj roman"
-    },
-    {
-        id: 4,  
-        title: "Marketing Tip", 
-        taglist: ["Marketing"],
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum bibendum leo, vitae luctus nisl hendrerit ac. Duis accumsan convallis sem at dapibus. Proin viverra est ut posuere...", 
-        cover_image: "https://media.licdn.com/dms/image/v2/D5612AQGaPpJHHoJ1yg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1721182447314?e=2147483647&v=beta&t=wNMSy5Vbg7JOgCREYHwVzDXsU-xll4zDQdBaD8dRlyo",
-        author: "serj roman"
-    },
-
-]
-
 export function PostList(){
     const {posts, isLoading, error} = usePosts();
 
@@ -73,7 +37,15 @@ export function PostList(){
             <div className="selectedPosts">
                 {filteredPosts.map((post) => {
                     return (
-                        <PostCard key={post.id} id={post.id} headline={post.title} desc={post.description} src={post.cover_image} author={post.author}></PostCard> 
+                        <PostCard key={post.id} 
+                        id={post.id} 
+                        title={post.title} 
+                        description={post.description} 
+                        cover_image={post.cover_image} 
+                        author={post.author}
+                        tags={post.tags}
+                        body_markdown={post.body_markdown}
+                        ></PostCard> 
                     )
                 })}
             </div>
