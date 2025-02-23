@@ -10,7 +10,7 @@ export function LikedPostsPage(){
             {likedPosts.map((post) => {
                 return <Link to={`/post/${post.id}`}>
                     <div>
-                        <h2>{post.title}</h2>
+                        <h2>{post.name}</h2>
                         <p>{post.description}</p>
                     </div>
                 </Link>

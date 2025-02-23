@@ -10,7 +10,7 @@ export function usePosts(){
         async function getPosts(){
             try{
                 setIsLoading(true);
-                const response = await fetch('https://dev.to/api/articles');
+                const response = await fetch('http://localhost:8000/api/post/all');
                 const posts = await response.json();
                 setPosts(posts)
             } catch (error){

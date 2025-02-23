@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 
 export interface IPost{
     id: number,
-    title: string,
-    cover_image: string,
-    tags: string,
-    description: string,
-    body_markdown: string,
+    name: string,
     author: string,
+    description: string,
+    time: string,
+    comment: [],
+    userId: number
 }
 
 export function usePostById(id: number){

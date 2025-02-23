@@ -12,21 +12,21 @@ export function PostPage(){
     return (
         <div className="postPage">
             { post !== undefined ? <>
-                <h1>{post.title}</h1>
-                <img src={post.cover_image} alt="" />
-                <p>{post.tags}</p>
+                <h1>{post.name}</h1>
+                {/* <img src={post.cover_image} alt="" /> */}
+                {/* <p>{post.tags}</p> */}
                 <LikeButton id={post.id} 
-                    title={post.title} 
-                    description={post.description} 
-                    cover_image={post.cover_image} 
+                    name={post.name} 
+                    description={post.description}  
+                    time={post.time}
+                    comment={post.comment}
+                    userId={post.userId}   
                     author={post.author}
-                    tags={post.tags}
-                    body_markdown={post.body_markdown}
-                    ></LikeButton>
+                    ></LikeButton>  
                 <hr/>  
-                <Markdown>
+                {/* <Markdown>
                     {post.body_markdown}
-                </Markdown>
+                </Markdown> */}
             </> : <div>{error}</div>}
         </div>
     )

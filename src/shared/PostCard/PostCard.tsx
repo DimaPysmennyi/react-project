@@ -27,22 +27,22 @@ export function PostCard(props: IPost){
             <div className='post'>
                 <Link to={`/post/${props.id}`}>
                     <div className="img">
-                        <img src={props.cover_image} alt="" />
+                        {/* <img src={props.cover_image} alt="" /> */}
                     </div>
                     <div className="headlines">
-                        <h2>{props.title.slice(0, 23)}...</h2>
+                        <h2>{props.name.slice(0, 23)}...</h2>
                         <p>{props.author}</p>
                     </div>
                 </Link>
                 <div className="desc">
                     <p>{props.description.slice(0, 100)}...</p>
                     <LikeButton id={props.id} 
-                    title={props.title} 
-                    description={props.description} 
-                    cover_image={props.cover_image} 
+                    name={props.name} 
+                    description={props.description}  
+                    time={props.time}
+                    comment={props.comment}
+                    userId={props.userId}   
                     author={props.author}
-                    tags={props.tags}
-                    body_markdown={props.body_markdown}
                     ></LikeButton>
                 </div>
             </div>

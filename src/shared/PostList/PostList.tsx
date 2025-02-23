@@ -9,15 +9,15 @@ export function PostList(){
     const [filteredPosts, setFilteredPosts] = useState(posts);
     const [selectedCategory, setSelectedCategory] = useState('All');
 
-    useEffect(() => {
-        if (selectedCategory == 'All'){
-            setFilteredPosts(posts);
-        } else{
-            setFilteredPosts(posts.filter((post) => {
-                return post.tags === selectedCategory;
-            }))
-        }
-    }, [selectedCategory])
+    // useEffect(() => {
+    //     if (selectedCategory == 'All'){
+    //         setFilteredPosts(posts);
+    //     } else{
+    //         setFilteredPosts(posts.filter((post) => {
+    //             return post.tags === selectedCategory;
+    //         }))
+    //     }
+    // }, [selectedCategory])
 
     useEffect(() => {
         setFilteredPosts(posts);
@@ -37,15 +37,14 @@ export function PostList(){
             <div className="selectedPosts">
                 {filteredPosts.map((post) => {
                     return (
-                        <PostCard key={post.id} 
-                        id={post.id} 
-                        title={post.title} 
-                        description={post.description} 
-                        cover_image={post.cover_image} 
+                        <PostCard id={post.id} 
+                        name={post.name} 
+                        description={post.description}  
+                        time={post.time}
+                        comment={post.comment}
+                        userId={post.userId}   
                         author={post.author}
-                        tags={post.tags}
-                        body_markdown={post.body_markdown}
-                        ></PostCard> 
+                        ></PostCard>
                     )
                 })}
             </div>
