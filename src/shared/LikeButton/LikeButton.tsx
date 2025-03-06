@@ -5,6 +5,7 @@ import { postContext } from "../../context/postContextProvider";
 
 export function LikeButton(props: IPost){
     let [likes, setLikes] = useState(0);
+    // вот вместо useContext лучше сделать свой хук, который этим занимается
     let {likedPosts, addLikedPost, removeLikedPost, isPostLiked} = useContext(postContext);
 
     function handleLike(){
@@ -16,7 +17,7 @@ export function LikeButton(props: IPost){
         addLikedPost(props);
         setLikes(likes+1);
     }
-
+    // log убираем
     console.log(likedPosts);
     
     return (

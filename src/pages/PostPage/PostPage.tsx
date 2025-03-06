@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+// Импорт не используется, нужно убрать
 import { useEffect, useState } from "react";
 import Markdown from "react-markdown";
 import './PostPage.css';
@@ -8,6 +9,7 @@ import { LikeButton } from "../../shared/LikeButton/LikeButton";
 
 export function PostPage(){
     const params = useParams();
+    // loading?
     const {post, error} = usePostById(Number(params.id));
     return (
         <div className="postPage">

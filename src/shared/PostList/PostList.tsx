@@ -4,11 +4,13 @@ import { usePosts } from "../../hooks/usePosts";
 import './PostList.css';
 
 export function PostList(){
+    // не используешь loading error, а надо
     const {posts, isLoading, error} = usePosts();
 
     const [filteredPosts, setFilteredPosts] = useState(posts);
     const [selectedCategory, setSelectedCategory] = useState('All');
 
+    // а фильтрация где
     // useEffect(() => {
     //     if (selectedCategory == 'All'){
     //         setFilteredPosts(posts);
@@ -28,6 +30,7 @@ export function PostList(){
             <select onChange={(event) => {
                 setSelectedCategory(event.target.value)
             }}>
+                {/* все категории надо брать из API(своего) */}
                 <option value="All">All</option>
                 <option value="Cats">Cats</option>
                 <option value="Developing">Developing</option>

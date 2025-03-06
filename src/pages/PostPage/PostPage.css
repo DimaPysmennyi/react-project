@@ -34,7 +34,7 @@
 .postPage #text{
     font-size: 20px;
 }
-
+/* никогда помоему не видел, чтобы стили накидывали на hr... */
 .postPage hr{
     width: 100%;
     color: #808080;

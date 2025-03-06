@@ -9,6 +9,7 @@ export function Header(){
                 <Link className="link" to="#">Profile</Link>
                 <Link className="link" to="/posts">My Posts</Link>
             </div>
+            {/* - */}
             <button className="create-button">+ Create</button>
         </header>
     )

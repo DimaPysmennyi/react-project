@@ -3,6 +3,7 @@ import { postContext } from "../../context/postContextProvider";
 import { Link } from "react-router-dom";
 
 export function LikedPostsPage(){
+    // isPostLiked не используешь
     const {likedPosts, isPostLiked} = useContext(postContext);
     return (
         <div>

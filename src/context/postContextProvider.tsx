@@ -10,8 +10,12 @@ interface IPostContext {
     isPostLiked: (id: number) => boolean | null;
 }
 
+
 const initialValue: IPostContext = {likedPosts: [], addLikedPost: (post: IPost) => {}, removeLikedPost: (id: number) => {}, isPostLiked: (id: number) => null};
+// сам контекст не надо экспортировать
 export const postContext = createContext<IPostContext>(initialValue);
+// лучше вот тут сделать хук, который будет ретуртинь useContext
+
 
 interface IPostContextProviderProps{
     children: ReactNode

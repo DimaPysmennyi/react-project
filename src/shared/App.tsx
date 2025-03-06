@@ -1,6 +1,6 @@
 import { PostContextProvider } from "../context/postContextProvider";
 import { AppRoutes } from "../routes/Routes";
-
+// а ты чего тут забыл. в отдельный файл types
 export interface IPost{
     id: number,
     headline: string,

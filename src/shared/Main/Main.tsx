@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+// Импорт не используется, нужно убрать
 import { PostList } from "../PostList/PostList";
 import './Main.css'
 

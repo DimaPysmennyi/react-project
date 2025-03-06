@@ -38,6 +38,7 @@ export function RegistrationPage(){
 
                 <input type="confirmPassword" placeholder="Confirm Password" {...register('confirmPassword', {
                     required: {value: true, message: 'Confirm Your Password'},
+                    // good
                     validate: (value: string) => {
                         if (watch("password") != value){
                             return 'Passwords do not match!'
