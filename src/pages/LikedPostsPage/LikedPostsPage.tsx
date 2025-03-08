@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { postContext } from "../../context/postContextProvider";
+import { usePostContext } from "../../context/postContextProvider";
 import { Link } from "react-router-dom";
 
 export function LikedPostsPage(){
-    const {likedPosts, isPostLiked} = useContext(postContext);
+    const {likedPosts} = usePostContext();
     return (
         <div>
             <h1>Liked Posts</h1>

@@ -4,14 +4,24 @@ import Markdown from "react-markdown";
 import './PostPage.css';
 import { usePostById } from "../../hooks/usePostById";
 import { LikeButton } from "../../shared/LikeButton/LikeButton";
+import { Grid } from "react-loader-spinner";
 
 
 export function PostPage(){
     const params = useParams();
-    const {post, error} = usePostById(Number(params.id));
+    const {post, isLoading, error} = usePostById(Number(params.id));
     return (
         <div className="postPage">
-            { post !== undefined ? <>
+            { isLoading === true ? (<div><Grid
+            visible={true}
+            height="80"
+            width="80"
+            color="#4fa94d"
+            ariaLabel="grid-loading"
+            radius="12.5"
+            wrapperStyle={{}}
+            wrapperClass="grid-wrapper"
+            /></div>) : ( post ? <>
                 <h1>{post.name}</h1>
                 {/* <img src={post.cover_image} alt="" /> */}
                 {/* <p>{post.tags}</p> */}
@@ -27,7 +37,8 @@ export function PostPage(){
                 {/* <Markdown>
                     {post.body_markdown}
                 </Markdown> */}
-            </> : <div>{error}</div>}
+            </> : <div>{error}</div>)
+            }
         </div>
     )
 }

@@ -19,8 +19,12 @@ export function usePostById(id: number){
             try{
                 setIsLoading(true);
                 const response = await fetch(`https://dev.to/api/articles/${id}`);
-                const json = await response.json();
-                setReceivedPost(json);
+                const result = await response.json();
+                if (result.status == "success"){
+                    setReceivedPost(result.data);
+                } else{
+                    setError(result.message)
+                }
             } catch (error){
                 const err = error instanceof Error ? error.message : undefined;
                 setError(`${err}`);

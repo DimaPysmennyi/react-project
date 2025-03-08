@@ -12,7 +12,16 @@ export function LoginPage(){
     })
 
     async function onSubmit(data: IForm){
-        console.log(data);
+        await fetch('http://localhost:8000/api/user/login/', {
+            method: "POST",
+            body: JSON.stringify({
+                email: data.email,
+                password: data.password,
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
     }
     
     return (

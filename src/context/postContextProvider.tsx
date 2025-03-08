@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useContext } from "react";
 import { IPost } from "../hooks/usePostById";
 import { ReactNode, useState } from "react";
 
@@ -11,7 +11,11 @@ interface IPostContext {
 }
 
 const initialValue: IPostContext = {likedPosts: [], addLikedPost: (post: IPost) => {}, removeLikedPost: (id: number) => {}, isPostLiked: (id: number) => null};
-export const postContext = createContext<IPostContext>(initialValue);
+const postContext = createContext<IPostContext>(initialValue);
+
+export function usePostContext(){
+    return useContext(postContext);
+}
 
 interface IPostContextProviderProps{
     children: ReactNode

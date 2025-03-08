@@ -11,8 +11,12 @@ export function usePosts(){
             try{
                 setIsLoading(true);
                 const response = await fetch('http://localhost:8000/api/post/all');
-                const posts = await response.json();
-                setPosts(posts)
+                const result = await response.json();
+                if (result.status == "error"){
+                    setError(result.message);
+                } else{
+                    setPosts(result.data);
+                }
             } catch (error){
                 const err = error instanceof Error ? error.message : undefined;
                 setError(`${err}`);
