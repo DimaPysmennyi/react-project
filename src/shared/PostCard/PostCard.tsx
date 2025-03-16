@@ -2,13 +2,13 @@ import { useState, useContext } from "react";
 import './PostCard.css';
 import { Link } from "react-router-dom";
 import { IPost } from "../../hooks/usePostById";
-import { postContext } from "../../context/postContextProvider";
+import { usePostContext } from "../../context/postContextProvider";
 import { LikeButton } from "../LikeButton/LikeButton";
 
 
 export function PostCard(props: IPost){
     let [likes, setLikes] = useState(0);
-    let {likedPosts, addLikedPost, removeLikedPost, isPostLiked} = useContext(postContext);
+    let {likedPosts, addLikedPost, removeLikedPost, isPostLiked} = usePostContext();
 
     function handleLike(){
         if (isPostLiked(props.id)){

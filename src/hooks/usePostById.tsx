@@ -18,7 +18,7 @@ export function usePostById(id: number){
         async function getArticle(){
             try{
                 setIsLoading(true);
-                const response = await fetch(`https://dev.to/api/articles/${id}`);
+                const response = await fetch(`http://localhost:8000/api/post/${id}`);
                 const result = await response.json();
                 if (result.status == "success"){
                     setReceivedPost(result.data);

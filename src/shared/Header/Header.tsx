@@ -6,7 +6,7 @@ export function Header(){
         <header>
             <div className='links'>
                 <Link className="link" to='/'>Main</Link>
-                <Link className="link" to="#">Profile</Link>
+                <Link className="link" to="/profile">Profile</Link>
                 <Link className="link" to="/posts">My Posts</Link>
             </div>
             <button className="create-button">+ Create</button>

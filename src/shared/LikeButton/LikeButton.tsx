@@ -1,11 +1,11 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { IPost } from "../../hooks/usePostById";
-import { postContext } from "../../context/postContextProvider";
+import { usePostContext } from "../../context/postContextProvider";
 
 
 export function LikeButton(props: IPost){
     let [likes, setLikes] = useState(0);
-    let {likedPosts, addLikedPost, removeLikedPost, isPostLiked} = useContext(postContext);
+    let {likedPosts, addLikedPost, removeLikedPost, isPostLiked} = usePostContext();
 
     function handleLike(){
         if (isPostLiked(props.id)){

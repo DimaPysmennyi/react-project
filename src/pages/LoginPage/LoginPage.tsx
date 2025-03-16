@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import './LoginPage.css';
+import { useUserContext } from "../../context/userContextProvider";
 
 interface IForm{
     email: string,
@@ -11,17 +12,10 @@ export function LoginPage(){
         mode: "onSubmit",
     })
 
+    const {login} = useUserContext();
+
     async function onSubmit(data: IForm){
-        await fetch('http://localhost:8000/api/user/login/', {
-            method: "POST",
-            body: JSON.stringify({
-                email: data.email,
-                password: data.password,
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
+        login(data.email, data.password);
     }
     
     return (
